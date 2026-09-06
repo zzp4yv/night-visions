@@ -37,6 +37,10 @@ android {
     buildFeatures {
         buildConfig = false
     }
+
+    sourceSets {
+        main.java.srcDirs = []
+    }
 }
 
 dependencies {

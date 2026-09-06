@@ -31,14 +31,29 @@ jobs:
           distribution: temurin
           java-version: '11'
 
-      - name: Build debug APK
-        uses: gradle/gradle-build-action@v3
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: 7.0.2
-          arguments: assembleDebug --stacktrace
+
+      - name: Run unit tests
+        run: gradle testDebugUnitTest --stacktrace
+
+      - name: Build debug APK
+        run: gradle assembleDebug --stacktrace
+
+      - name: Package and sign APK
+        run: |
+          mkdir -p app/build/outputs/apk/release
+          cp app/prebuilt/night-vision-9.22.5.3-unsigned.apk app/build/outputs/apk/release/night-vision-9.22.5.3-unsigned.apk
+          zip -d app/build/outputs/apk/release/night-vision-9.22.5.3-unsigned.apk 'META-INF/*.RSA' 'META-INF/*.SF' 'META-INF/MANIFEST.MF' 'META-INF/INDEX.LIST' || true
+          "$ANDROID_HOME/build-tools/30.0.3/zipalign" -p -f 4 app/build/outputs/apk/release/night-vision-9.22.5.3-unsigned.apk app/build/outputs/apk/release/night-vision-9.22.5.3-aligned.apk
+          "$ANDROID_HOME/build-tools/30.0.3/apksigner" sign --ks "$HOME/.android/debug.keystore" --ks-pass pass:android --out app/build/outputs/apk/release/night-vision-9.22.5.3.apk app/build/outputs/apk/release/night-vision-9.22.5.3-aligned.apk
+          "$ANDROID_HOME/build-tools/30.0.3/apksigner" verify --verbose --print-certs app/build/outputs/apk/release/night-vision-9.22.5.3.apk
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: app-debug
-          path: app/build/outputs/apk/debug/*.apk
+          name: night-vision-9.22.5.3
+          path: app/build/outputs/apk/release/night-vision-9.22.5.3.apk
+          if-no-files-found: error
