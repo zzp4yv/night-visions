@@ -25,6 +25,12 @@ jobs:
       - name: Install Android SDK packages
         run: sdkmanager "platforms;android-30" "build-tools;30.0.2"
 
+      - name: Switch to Java 11 for Gradle
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '11'
+
       - name: Build debug APK
         uses: gradle/gradle-build-action@v3
         with:
