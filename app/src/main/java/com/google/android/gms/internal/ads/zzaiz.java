@@ -1,0 +1,29 @@
+package com.google.android.gms.internal.ads;
+
+import android.os.Parcel;
+import android.os.Parcelable;
+import com.google.android.gms.common.internal.safeparcel.SafeParcelReader;
+
+/* loaded from: classes2.dex */
+public final class zzaiz implements Parcelable.Creator<zzaiy> {
+    @Override // android.os.Parcelable.Creator
+    public final /* synthetic */ zzaiy createFromParcel(Parcel parcel) {
+        int m14434L = SafeParcelReader.m14434L(parcel);
+        int i2 = 0;
+        while (parcel.dataPosition() < m14434L) {
+            int m14425C = SafeParcelReader.m14425C(parcel);
+            if (SafeParcelReader.m14458v(m14425C) != 1) {
+                SafeParcelReader.m14433K(parcel, m14425C);
+            } else {
+                i2 = SafeParcelReader.m14427E(parcel, m14425C);
+            }
+        }
+        SafeParcelReader.m14457u(parcel, m14434L);
+        return new zzaiy(i2);
+    }
+
+    @Override // android.os.Parcelable.Creator
+    public final /* synthetic */ zzaiy[] newArray(int i2) {
+        return new zzaiy[i2];
+    }
+}

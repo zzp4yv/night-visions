@@ -1,0 +1,23 @@
+package com.google.android.gms.measurement.internal;
+
+import com.google.android.gms.internal.measurement.zzju;
+
+/* compiled from: com.google.android.gms:play-services-measurement-impl@@17.2.0 */
+/* renamed from: com.google.android.gms.measurement.internal.j */
+/* loaded from: classes2.dex */
+final /* synthetic */ class C7698j implements InterfaceC7657e3 {
+
+    /* renamed from: a */
+    static final InterfaceC7657e3 f28713a = new C7698j();
+
+    private C7698j() {
+    }
+
+    @Override // com.google.android.gms.measurement.internal.InterfaceC7657e3
+    /* renamed from: a */
+    public final Object mo22697a() {
+        Boolean valueOf;
+        valueOf = Boolean.valueOf(zzju.m22434b());
+        return valueOf;
+    }
+}
