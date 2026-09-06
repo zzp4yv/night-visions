@@ -5,10 +5,10 @@
         <item quantity="other">%d new notifications</item>
     </plurals>
     <plurals name="updates_notification_body">
-        <item quantity="one">You&apos;ve got %d update ready to install</item>
-        <item quantity="two">You&apos;ve got %d updates ready to install</item>
-        <item quantity="few">You&apos;ve got %d updates ready to install</item>
-        <item quantity="many">You&apos;ve got %d updates ready to install</item>
-        <item quantity="other">You&apos;ve got %d updates ready to install</item>
+        <item quantity="one">You\'ve got %d update ready to install</item>
+        <item quantity="two">You\'ve got %d updates ready to install</item>
+        <item quantity="few">You\'ve got %d updates ready to install</item>
+        <item quantity="many">You\'ve got %d updates ready to install</item>
+        <item quantity="other">You\'ve got %d updates ready to install</item>
     </plurals>
 </resources>
